@@ -26,7 +26,7 @@ module.exports = function (grunt) { // Обязательная функция-�
             }
         },
         //------------------------------------------------------------
-        concat: {
+        /*concat: {
             options: {
                 separator: ';'
             },
@@ -34,15 +34,15 @@ module.exports = function (grunt) { // Обязательная функция-�
                 src: ['src/intro.js', 'src/project.js', 'src/outro.js'],
                 dest: 'dist/built.js'
             }
-        },
+        },*/
         //------------------------------------------------------------
-        uglify: {
+        /*uglify: {
             my_target: {
                 files: {
                     'dest/all.min.js': ['src/input1.js', 'src/input2.js']
                 }
             }
-        },
+        },*/
         //------------------------------------------------------------
         watch: {
             less: {
@@ -64,5 +64,6 @@ module.exports = function (grunt) { // Обязательная функция-�
     // Инициализация плагинов, таски которых мы вызываем
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
 };
