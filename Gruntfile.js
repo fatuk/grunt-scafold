@@ -3,26 +3,27 @@ module.exports = function (grunt) {
     // Load Grunt tasks declared in the package.json file
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-    // Конфигурация проекта
+    // Project configuration
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         //------------------------------------------------------------
-        less: { // Task less
+        less: {
             options: {
-                expand: true
+                sourceMap: true,
+                sourceMapRootpath: '../',
+                strictMath: true
             },
-            dev: { // Target
+            dev: {
                 options: {
-                    strictMath: true
+                    
                 },
                 files: {
                     'css/all.css': ['less/all.less']
                 }
             },
-            release: { // Target
+            release: {
                 options: {
-                    strictMath: true,
-                    yuicompress: true
+                    cleancss: true
                 },
                 files: {
                     'css/all.css': ['less/all.less']
@@ -34,7 +35,7 @@ module.exports = function (grunt) {
             server: {
                 options: {
                     port: 8000,
-                    base: 'output',
+                    base: '',
                     keepalive: false
                 }
             }
@@ -42,17 +43,23 @@ module.exports = function (grunt) {
         //------------------------------------------------------------
         watch: {
             less: {
-                files: 'less/**/*.less',
+                files: 'less/*.less',
                 tasks: ['less:dev'],
                 options: {
                     interrupt: true
                 }
             },
-            livereload: {
+            css: {
                 options: {
                     livereload: true
                 },
-                files: ['css/**/*.css']
+                files: 'css/*.css'
+            },
+            html: {
+                options: {
+                    livereload: true
+                },
+                files: '*.html'
             }
         }
         //------------------------------------------------------------
