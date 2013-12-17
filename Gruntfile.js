@@ -10,7 +10,9 @@ module.exports = function (grunt) {
         less: {
             options: {
                 sourceMap: true,
-                sourceMapRootpath: '../',
+                // sourceMapRootpath: '../',
+                sourceMapFilename: 'all.less.map',
+                sourceMapURL: '../all.less.map',
                 strictMath: true
             },
             dev: {
@@ -60,6 +62,12 @@ module.exports = function (grunt) {
                     livereload: true
                 },
                 files: '*.html'
+            },
+            js: {
+                options: {
+                    livereload: true
+                },
+                files: 'js/*.js'
             }
         }
         //------------------------------------------------------------
